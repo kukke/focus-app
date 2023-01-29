@@ -27,8 +27,10 @@ function handleFocusTime() {
         if(timeLeftInSeconds === 0)
             setLastVisit();
         headerString = 'It\'s time for your browsing break! :-)'
+        document.getElementById('header').classList.remove('angry');
         document.getElementById('header').classList.add('happy');
         document.getElementsByClassName('container')[0].classList.add('happy-background');
+        document.getElementsByClassName('container')[0].classList.remove('angry-background');
         document.getElementById('subHeaderText').innerHTML = '';
         document.title = 'Happy browsing!';
     }
@@ -48,8 +50,10 @@ function handleFocusTime() {
         var timeString = hoursStr + minutesStr + ' left until next browsing break. Get back to work.';//hoursStr + minutesFloorInteger + minutesStr + secondsFloorInteger + ' seconds';
         document.getElementById('subHeaderText').innerHTML = timeString;
         headerString = 'Sorry man ...';
+        document.getElementsByClassName('container')[0].classList.remove('happy-background');
         document.getElementsByClassName('container')[0].classList.add('angry-background');
 
+        document.getElementById('header').classList.remove('happy');
         document.getElementById('header').classList.add('angry');
         document.title = (hoursFloorInteger < 10 ? '0' + hoursFloorInteger : hoursFloorInteger) + ':' + (minutesFloorInteger < 10 ? '0' + minutesFloorInteger : minutesFloorInteger) + ' left. Stay focused!';
     }
